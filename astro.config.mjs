@@ -6,9 +6,13 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Take Notes',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
+				{
+					label: 'Livros',
+					items: [{ autogenerate: { directory: 'books' } }],
+				},
 				{
 					label: 'Guides',
 					items: [
