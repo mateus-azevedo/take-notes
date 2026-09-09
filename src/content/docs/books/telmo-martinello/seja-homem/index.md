@@ -1,4 +1,6 @@
-# Seja Homem
+---
+title: Seja Homem
+---
 
 Pagina principal do livro.
 
@@ -13,6 +15,8 @@ Pagina principal do livro.
 * lista de capitulos;
 
 Exemplo:
+
+```
 ---
 title: "Clean Architecture"
 author: "Robert C. Martin"
@@ -22,7 +26,9 @@ startedAt: 2026-09-01
 finishedAt:
 rating:
 ---
-# Clean Architecture
+```
+
+## Clean Architecture
 
 Robert C. Martin
 
@@ -30,16 +36,16 @@ Robert C. Martin
 
 [ Capa ]
 
-## Sobre o livro
+### Sobre o livro
 
 Minha apresentação/análise do livro...
 
-## Leitura
+### Leitura
 
 Status: Em andamento
 Início: 01/09/2026
 
-## Capítulos
+### Capítulos
 
 1. [Introdução]
 2. [Design e Arquitetura]
