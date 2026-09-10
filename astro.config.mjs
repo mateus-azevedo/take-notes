@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightSidebar from './src/plugins/starlight-sidebar/index';
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,22 +9,11 @@ export default defineConfig({
 		starlight({
 			title: 'Take Notes',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
+			plugins: [
+				starlightSidebar({
+					directory: 'books',
 					label: 'Livros',
-					items: [{ autogenerate: { directory: 'books' } }],
-				},
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
-				},
+				})
 			],
 		}),
 	],
