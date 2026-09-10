@@ -4,15 +4,15 @@ title: Seja Homem
 
 Pagina principal do livro.
 
-* capa;
-* titulo;
-* autor;
-* descricao;
-* minha avaliacao;
-* status de leitura;
-* datas;
-* observacoes;
-* lista de capitulos;
+- capa;
+- titulo;
+- autor;
+- descricao;
+- minha avaliacao;
+- status de leitura;
+- datas;
+- observacoes;
+- lista de capitulos;
 
 Exemplo:
 

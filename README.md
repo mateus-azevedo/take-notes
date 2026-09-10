@@ -31,14 +31,14 @@ O conteúdo é mantido em arquivos **Markdown/MDX**, enquanto o Astro é respons
 
 ## 🎯 Objetivos
 
-* Organizar minhas leituras em um único lugar;
-* Registrar resumos dos capítulos;
-* Documentar aprendizados e observações pessoais;
-* Acompanhar livros em andamento e concluídos;
-* Facilitar a consulta posterior das anotações;
-* Possibilitar pesquisas por conteúdo;
-* Manter todo o conteúdo versionado pelo Git;
-* Publicar a biblioteca gratuitamente através do GitHub Pages.
+- Organizar minhas leituras em um único lugar;
+- Registrar resumos dos capítulos;
+- Documentar aprendizados e observações pessoais;
+- Acompanhar livros em andamento e concluídos;
+- Facilitar a consulta posterior das anotações;
+- Possibilitar pesquisas por conteúdo;
+- Manter todo o conteúdo versionado pelo Git;
+- Publicar a biblioteca gratuitamente através do GitHub Pages.
 
 ---
 
@@ -94,17 +94,17 @@ Robert C. Martin
 
 Cada livro possui uma página principal contendo:
 
-* Título;
-* Autor;
-* Descrição;
-* Capa;
-* Status de leitura;
-* Data de início;
-* Data de conclusão;
-* Avaliação;
-* Apresentação;
-* Observações;
-* Lista de capítulos.
+- Título;
+- Autor;
+- Descrição;
+- Capa;
+- Status de leitura;
+- Data de início;
+- Data de conclusão;
+- Avaliação;
+- Apresentação;
+- Observações;
+- Lista de capítulos.
 
 Exemplo:
 
@@ -135,14 +135,14 @@ Cada capítulo possui um arquivo Markdown independente.
 
 A página pode conter:
 
-* Resumo;
-* Principais conceitos;
-* Ideias importantes;
-* Citações;
-* Observações pessoais;
-* Aprendizados;
-* Relações com outros conceitos;
-* Dúvidas.
+- Resumo;
+- Principais conceitos;
+- Ideias importantes;
+- Citações;
+- Observações pessoais;
+- Aprendizados;
+- Relações com outros conceitos;
+- Dúvidas.
 
 ---
 
@@ -190,20 +190,18 @@ Por exemplo:
 ```mdx
 # Arquitetura
 
-<Callout type="info">
-  Este conceito é especialmente importante.
-</Callout>
+<Callout type="info">Este conceito é especialmente importante.</Callout>
 ```
 
 Isso possibilita criar recursos específicos para as anotações, como:
 
-* Avisos;
-* Destaques;
-* Caixas de informação;
-* Exemplos de código;
-* Diagramas;
-* Vídeos;
-* Componentes interativos.
+- Avisos;
+- Destaques;
+- Caixas de informação;
+- Exemplos de código;
+- Diagramas;
+- Vídeos;
+- Componentes interativos.
 
 ---
 
@@ -547,26 +545,26 @@ A arquitetura deve permitir adicionar novos recursos sem exigir uma reorganizaç
 
 ## 🔮 Possíveis funcionalidades futuras
 
-* [ ] Dark mode;
-* [ ] Busca avançada;
-* [ ] Filtros por status de leitura;
-* [ ] Filtros por autor;
-* [ ] Tags;
-* [ ] Avaliação dos livros;
-* [ ] Progresso de leitura;
-* [ ] Estatísticas da biblioteca;
-* [ ] Página de livros atualmente em leitura;
-* [ ] Página de livros concluídos;
-* [ ] Sistema de citações;
-* [ ] Notas pessoais;
-* [ ] Relacionamento entre livros;
-* [ ] Recomendações baseadas em temas;
-* [ ] RSS;
-* [ ] Sitemap;
-* [ ] Open Graph;
-* [ ] Suporte a Mermaid;
-* [ ] Suporte a fórmulas matemáticas com KaTeX;
-* [ ] Componentes personalizados para os resumos.
+- [ ] Dark mode;
+- [ ] Busca avançada;
+- [ ] Filtros por status de leitura;
+- [ ] Filtros por autor;
+- [ ] Tags;
+- [ ] Avaliação dos livros;
+- [ ] Progresso de leitura;
+- [ ] Estatísticas da biblioteca;
+- [ ] Página de livros atualmente em leitura;
+- [ ] Página de livros concluídos;
+- [ ] Sistema de citações;
+- [ ] Notas pessoais;
+- [ ] Relacionamento entre livros;
+- [ ] Recomendações baseadas em temas;
+- [ ] RSS;
+- [ ] Sitemap;
+- [ ] Open Graph;
+- [ ] Suporte a Mermaid;
+- [ ] Suporte a fórmulas matemáticas com KaTeX;
+- [ ] Componentes personalizados para os resumos.
 
 ---
 
@@ -600,4 +598,3 @@ O objetivo não é apenas criar um site sobre livros, mas construir uma **biblio
 Este projeto contém anotações e conteúdos produzidos para uso pessoal.
 
 A licença e as condições de utilização do conteúdo serão definidas futuramente.
-
