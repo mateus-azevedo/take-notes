@@ -32,18 +32,43 @@ export function readFrontmatter(
 	return data as SidebarFrontmatter;
 }
 
+export function normalizeSlug(
+	value: string,
+): string {
+	return value
+		.replaceAll(path.sep, '/')
+		.replace(/^\/+/, '')
+		.replace(/\/+$/, '');
+}
+
 export function getSlug(
+	baseSlug: string,
 	relativePath: string,
 ): string {
-	return relativePath
+	const normalizedPath = relativePath
 		.replaceAll(path.sep, '/')
 		.replace(/\.(md|mdx)$/, '')
 		.replace(/\/index$/, '');
+
+	const normalizedBase =
+		normalizeSlug(baseSlug);
+
+	if (!normalizedPath) {
+		return normalizedBase;
+	}
+
+	return [
+		normalizedBase,
+		normalizedPath,
+	]
+		.filter(Boolean)
+		.join('/');
 }
 
 export function createFileEntry(
 	filePath: string,
 	relativePath: string,
+	baseSlug: string,
 ): FileEntry {
 	return {
 		type: 'file',
@@ -53,14 +78,20 @@ export function createFileEntry(
 		),
 		path: filePath,
 		relativePath,
-		slug: getSlug(relativePath),
-		metadata: readFrontmatter(filePath),
+		slug: getSlug(
+			baseSlug,
+			relativePath,
+		),
+		metadata: readFrontmatter(
+			filePath,
+		),
 	};
 }
 
 export function readDirectory(
 	directoryPath: string,
-	relativePath = '',
+	relativePath: string,
+	baseSlug: string,
 ): DirectoryEntry {
 	const entries = fs.readdirSync(
 		directoryPath,
@@ -85,6 +116,7 @@ export function readDirectory(
 					relativePath,
 					indexEntry.name,
 				),
+				baseSlug,
 			)
 		: undefined;
 
@@ -115,6 +147,7 @@ export function readDirectory(
 				readDirectory(
 					entryPath,
 					entryRelativePath,
+					baseSlug,
 				),
 			);
 
@@ -129,6 +162,7 @@ export function readDirectory(
 				createFileEntry(
 					entryPath,
 					entryRelativePath,
+					baseSlug,
 				),
 			);
 		}
@@ -139,7 +173,10 @@ export function readDirectory(
 		name: path.basename(directoryPath),
 		path: directoryPath,
 		relativePath,
-		slug: getSlug(relativePath),
+		slug: getSlug(
+			baseSlug,
+			relativePath,
+		),
 		index,
 		children,
 	};
@@ -147,6 +184,7 @@ export function readDirectory(
 
 export function readRootDirectory(
 	directoryPath: string,
+	baseSlug: string,
 ): Entry[] {
 	const entries = fs.readdirSync(
 		directoryPath,
@@ -166,6 +204,7 @@ export function readRootDirectory(
 				readDirectory(
 					entryPath,
 					entry.name,
+					baseSlug,
 				),
 			];
 		}
@@ -178,6 +217,7 @@ export function readRootDirectory(
 				createFileEntry(
 					entryPath,
 					entry.name,
+					baseSlug,
 				),
 			];
 		}

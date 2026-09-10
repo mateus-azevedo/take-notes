@@ -13,25 +13,8 @@ import {
 } from './generator';
 
 import type {
-	SidebarGeneratorOptions,
+	StarlightSidebarOptions,
 } from './types';
-
-export interface StarlightSidebarOptions
-	extends Omit<
-		SidebarGeneratorOptions,
-		'directory'
-	> {
-	/**
-	 * Diretório relativo a:
-	 *
-	 * src/content/docs/
-	 *
-	 * Exemplo:
-	 *
-	 * books
-	 */
-	directory: string;
-}
 
 function resolveDocsDirectory(
 	root: URL,
@@ -79,6 +62,7 @@ export default function starlightSidebar(
 				const entries =
 					readRootDirectory(
 						docsDirectory,
+						options.directory,
 					);
 
 				const sidebarGroup =
@@ -89,6 +73,8 @@ export default function starlightSidebar(
 							includeDrafts:
 								options.includeDrafts ??
 								command === 'dev',
+							baseSlug:
+								options.directory,
 						},
 					);
 

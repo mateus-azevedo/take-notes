@@ -67,7 +67,7 @@ export interface DirectoryEntry {
 	slug: string;
 
 	/**
-	 * index.md ou index.mdx do diretório.
+	 * `index.md` ou `index.mdx` do diretório.
 	 */
 	index?: FileEntry;
 
@@ -81,18 +81,21 @@ export type Entry = FileEntry | DirectoryEntry;
 
 export interface SidebarGeneratorOptions {
 	/**
-	 * Diretório raiz utilizado para gerar a árvore.
+	 * Prefixo utilizado pelo slug do Starlight.
 	 *
 	 * Exemplo:
-	 * src/content/docs/books
+	 *
+	 * ```
+	 * directory: 'books'
+	 * baseSlug: 'books'
+	 * ```
+	 * apresentacao.md
+	 * → books/apresentacao
 	 */
-	directory: string;
+	baseSlug: string;
 
 	/**
 	 * Nome exibido no grupo principal.
-	 *
-	 * Exemplo:
-	 * Livros
 	 */
 	label: string;
 
@@ -102,7 +105,24 @@ export interface SidebarGeneratorOptions {
 	collapsed?: boolean;
 
 	/**
-	 * Se deve incluir páginas draft durante o build.
+	 * Inclui páginas marcadas como draft.
 	 */
 	includeDrafts?: boolean;
+}
+
+export interface StarlightSidebarOptions
+	extends Omit<
+		SidebarGeneratorOptions,
+		'baseSlug'
+	> {
+	/**
+	 * Diretório relativo a:
+	 *
+	 * `src/content/docs/`
+	 *
+	 * Exemplo:
+	 *
+	 * `books`
+	 */
+	directory: string;
 }

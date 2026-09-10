@@ -3,10 +3,8 @@ import type {
 	Entry,
 	FileEntry,
 	SidebarGeneratorOptions,
-	SidebarFrontmatter,
+	SidebarItem,
 } from './types';
-
-import type { SidebarItem } from './types';
 
 function prettifyName(name: string): string {
 	return name
@@ -20,12 +18,10 @@ function prettifyName(name: string): string {
 
 function getMetadata(
 	entry: Entry,
-): SidebarFrontmatter | undefined {
-	if (entry.type === 'directory') {
-		return entry.index?.metadata;
-	}
-
-	return entry.metadata;
+) {
+	return entry.type === 'directory'
+		? entry.index?.metadata
+		: entry.metadata;
 }
 
 function getLabel(
@@ -33,17 +29,11 @@ function getLabel(
 ): string {
 	const metadata = getMetadata(entry);
 
-	if (
-		metadata?.sidebar?.label
-	) {
-		return metadata.sidebar.label;
-	}
-
-	if (metadata?.title) {
-		return metadata.title;
-	}
-
-	return prettifyName(entry.name);
+	return (
+		metadata?.sidebar?.label ??
+		metadata?.title ??
+		prettifyName(entry.name)
+	);
 }
 
 function getOrder(
@@ -90,12 +80,6 @@ function sortEntries(
 	});
 }
 
-function getSidebarMetadata(
-	entry: Entry,
-) {
-	return getMetadata(entry)?.sidebar;
-}
-
 function createFileItem(
 	entry: FileEntry,
 ): SidebarItem | null {
@@ -103,18 +87,9 @@ function createFileItem(
 		return null;
 	}
 
-	const sidebar =
-		getSidebarMetadata(entry);
-
 	return {
 		slug: entry.slug,
 		label: getLabel(entry),
-		...(sidebar?.badge
-			? { badge: sidebar.badge }
-			: {}),
-		...(sidebar?.attrs
-			? { attrs: sidebar.attrs }
-			: {}),
 	};
 }
 
@@ -126,8 +101,6 @@ function createDirectoryItem(
 		entry.children,
 		options,
 	);
-
-	const hasIndex = Boolean(entry.index);
 
 	/*
 	 * Diretório sem conteúdo.
@@ -156,7 +129,10 @@ function createDirectoryItem(
 			return null;
 		}
 
-		return createFileItem(entry.index);
+		return {
+			slug: entry.index.slug,
+			label: getLabel(entry),
+		};
 	}
 
 	/*
@@ -173,42 +149,29 @@ function createDirectoryItem(
 	 * Telmo Martinello
 	 * └── Seja Homem
 	 */
-	if (hasIndex) {
-		const sidebar =
-			entry.index?.metadata.sidebar;
-
+	if (entry.index) {
 		return {
 			label: getLabel(entry),
 			items: children,
-			collapsed:
-				options.collapsed ?? false,
-			...(sidebar?.badge
-				? { badge: sidebar.badge }
-				: {}),
+			collapsed: false,
 		};
 	}
 
 	/*
 	 * Diretório sem index.md.
 	 *
-	 * Exemplo:
-	 *
-	 * fundamentos/
-	 * ├── javascript.md
-	 * └── typescript.md
-	 *
-	 * Resultado:
-	 *
-	 * fundamentos
-	 * ├── Javascript
-	 * └── Typescript
+	 * Nesse caso o diretório continua
+	 * sendo apenas um grupo.
 	 */
-	return {
-		label: getLabel(entry),
-		items: children,
-		collapsed:
-			options.collapsed ?? false,
-	};
+	if (children.length > 0) {
+		return {
+			label: getLabel(entry),
+			items: children,
+			collapsed: false,
+		};
+	}
+
+	return null;
 }
 
 function generateEntry(
@@ -219,6 +182,10 @@ function generateEntry(
 		!options.includeDrafts &&
 		isDraft(entry)
 	) {
+		return null;
+	}
+
+	if (isHidden(entry)) {
 		return null;
 	}
 
