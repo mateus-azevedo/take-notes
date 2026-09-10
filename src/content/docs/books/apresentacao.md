@@ -20,11 +20,11 @@ Autor
 
 O objetivo não é apenas registrar quais livros livros li, mas também documentar:
 
-* ideias importantes;
-* conceitos aprendidos;
-* resumos dos capítulos;
-* reflexões pessoais;
-* aplicações práticas;
-* referências que considero relevantes;
+- ideias importantes;
+- conceitos aprendidos;
+- resumos dos capítulos;
+- reflexões pessoais;
+- aplicações práticas;
+- referências que considero relevantes;
 
 A ideia é construir uma biblioteca pessoal de conhecimento que possa ser consultada ao longo do tempo.
