@@ -15,12 +15,15 @@
     "gray-matter": "^4.0.3",
     "sharp": "^0.35.3"
   },
-  "allowScripts": {
-    "esbuild": true
-  },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
     "prettier": "3.9.6"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs,json,md,mdx,astro,yml,yaml}": "prettier --write"
+  },
+  "allowScripts": {
+    "esbuild": true
   }
 }
