@@ -8,7 +8,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.0",
@@ -19,12 +23,24 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "~3.1.0",
+    "eslint-plugin-mdx": "^3.8.1",
+    "eslint-plugin-yml": "^3.8.1",
+    "globals": "^17.12.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
-    "prettier": "3.9.6"
+    "prettier": "3.9.6",
+    "typescript-eslint": "^8.70.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs,json,md,mdx,astro,yml,yaml}": "prettier --write"
+    "*.{js,jsx,ts,tsx,mjs,cjs,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx,yml,yaml}": "prettier --write"
   },
   "allowScripts": {
     "esbuild": true
