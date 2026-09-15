@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
+    "check": "astro check",
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
