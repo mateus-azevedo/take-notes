@@ -1,4 +1,4 @@
-import eslint from "@eslint/js";
+import js from "@eslint/js";
 import astro from "eslint-plugin-astro";
 import * as mdx from "eslint-plugin-mdx";
 import yml from "eslint-plugin-yml";
@@ -17,7 +17,7 @@ export default tseslint.config(
     ],
   },
 
-  eslint.configs.recommended,
+  js.configs.recommended,
 
   ...tseslint.configs.recommended,
 
