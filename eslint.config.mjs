@@ -6,7 +6,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 
-export default tseslint.config(
+export default [
   {
     ignores: [
       "**/dist/**",
@@ -58,4 +58,4 @@ export default tseslint.config(
   },
 
   eslintConfigPrettier, // Disables ESLint formatting rules that conflict with Prettier.
-);
+];
